@@ -63,6 +63,9 @@ type FuturesTrader struct {
 
 // NewFuturesTrader 创建合约交易器
 func NewFuturesTrader(apiKey, secretKey string, userId string) *FuturesTrader {
+	// 👇👇👇 添加这一行 👇👇👇
+    futures.UseTestnet = true 
+    // 👆👆👆 添加这一行 👆👆👆
 	client := futures.NewClient(apiKey, secretKey)
 
 	hookRes := hook.HookExec[hook.NewBinanceTraderResult](hook.NEW_BINANCE_TRADER, userId, client)
